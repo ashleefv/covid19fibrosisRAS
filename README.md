@@ -3,8 +3,7 @@
 ## Overview 
 The mathematical model describes the role of patient-specific premorbidity, age, and gender differences in the progression of COVID-19 lung fibrosis.
 
-## Mathematical modeling of progression of fibrosis with dysregulation of TGF-β in COVID19 patients
-
+## Mathematical modeling of patient-specific premorbidity, age, and gender differences in COVID-19 lung fibrosis
 ### Code Authors
 Mohammad Aminul Islam and Ashlee N. Ford Versypt, 
 Dept. of Chemical & Biological Engineering,
