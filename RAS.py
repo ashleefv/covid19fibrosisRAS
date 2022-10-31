@@ -228,10 +228,10 @@ for Cases in range(number_of_cases):
             y[10] = (kace2ang2on *fACE2[0]* x[3] - kace2ang2on * xI * x[3]) * kT + kMT * x[11] + kFT * x[12] - dT * x[10]
 
             # Macrophage
-            y[11] = MTB/90 - dM*x[11]
+            y[11] = MTB/90 - dM*x[11]               # experiments ran for 90 mins
 
             # Fibroblast
-            y[12] = FgTB/(48*60) - dF * x[12]
+            y[12] = FgTB/(48*60) - dF * x[12]       # experiments ran for 48 hr
 
             # Collagen
             y[13] = kFC * ((0.942 * x[10]) / (0.174 + x[10])) * x[12]

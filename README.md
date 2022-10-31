@@ -3,7 +3,7 @@
 ## Overview 
 The mathematical model describes the role of patient-specific premorbidity, age, and gender differences in the progression of COVID-19 lung fibrosis.
 
-## Mathematical modeling of patient-specific premorbidity, age, and gender differences in COVID-19 lung fibrosis
+## Mathematical modeling of premorbidity, age, and gender differences in COVID-19 lung fibrosis
 ### Code Authors
 Mohammad Aminul Islam and Ashlee N. Ford Versypt, 
 Dept. of Chemical & Biological Engineering,
@@ -21,7 +21,7 @@ Corresponding author: A. N. Ford Versypt, ashleefv@buffalo.edu
 
 * RAS_local_sensitivity_variables.py This file generate time dynamic sensitivity for model variables
 
-* ueACE2_200.p - ueACE2_2000.p are data file for ACE2 dynamics from the agent-based model
+* ueACE2_200.p - ueACE2_2000.p and ueACE2t are data file for ACE2 dynamics from the agent-based model
 
 ## Acknowledgements
 Research reported in this publication was supported by the National Institute of General Medical Sciences of the National Institutes of Health under award number R35GM133763. The content is solely the responsibility of the authors and does not necessarily represent the offcial views of the National Institutes of Health.
