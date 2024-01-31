@@ -13,8 +13,8 @@ import random, pickle
 # User input for for RAS model
 number_of_cases = 10
 Nc = 2  # first loop to reach steady state without ACE2 (N1) and second loop with ACE2 (N2)
-N1 = 10800  # min, simulation time before disease onset to load premorbid state
-N2 = 21600  # min, simulation time after disease onset
+N1 = 1440  # min, simulation time before disease onset to load premorbid state
+N2 = 14400  # min, simulation time after disease onset
 
 #kT = 7e-4       # ANGII induced TGF-beta production rate
 kT_all = [1e-3, 9e-4, 8e-4, 7e-4, 6e-4, 5e-4, 4e-4, 3e-4, 2e-4, 1e-4]       # ANGII induced TGF-beta production rate
@@ -60,10 +60,11 @@ for Cases in range(number_of_cases):
 
 
     # Renin [x0] and MAS-ANG(1-7) [x9] are estimated using linear solving, see calculation after linear solving for details
-    x10 = 0.0           # TGF-β  ng/mL
-    x11 = 0.0           # Macrophage    (population number)
-    x12 = 0.0           # Fibroblast    (population number)
-    x13 = 0.0           # Collagen  μg
+    x10 = 0.0           # Unconverted ANGII
+    x11 = 0.0           # TGF-β  ng/mL
+    x12 = 0.0           # Macrophage    (population number)
+    x13 = 0.0           # Fibroblast    (population number)
+    x14 = 0.0           # Collagen  μg
 
 
 
@@ -148,10 +149,10 @@ for Cases in range(number_of_cases):
         def diff(x, T, baseline,kT):
 
             if (feedback_type == 'with'):
-                if x[7]>1:
+                if x[7]>=3:
                     beta = beta0 + (math.pow((x7/x[7]),delta)-1)
                 else:
-                    beta = beta0 + (math.pow((x7/1), delta) - 1)
+                    beta = beta0 + (math.pow((x7/3), delta) - 1)
             if (feedback_type == 'without'):
                 beta = beta0
 
@@ -163,7 +164,7 @@ for Cases in range(number_of_cases):
             if baseline ==0:
                 xI = fACE2[0]
             if baseline == 1:
-                xI = np.interp(T, tACE2, fACE2)
+                xI = np.interp((T/(24*60)), tACE2, fACE2)
 
 
 
@@ -179,8 +180,8 @@ for Cases in range(number_of_cases):
             T_beta_data2 = [0, 0.01, 0.1, 1, 10]
 
             # Considering the difference from interpolated value to baseline value
-            MTB = np.interp(x[10], T_beta_data1, M_data) - M_data[0]
-            FgTB = np.interp(x[10], T_beta_data2, Fg_data) - Fg_data[0]
+            MTB = np.interp(x[11], T_beta_data1, M_data) - M_data[0]
+            FgTB = np.interp(x[11], T_beta_data2, Fg_data) - Fg_data[0]
 
             ##########################################################################################################
 
@@ -192,10 +193,10 @@ for Cases in range(number_of_cases):
             y[0] = beta - math.log(2) / hR * x[0]
 
             # Angiotensinogen
-            y[1] = kA - cR * x[0] - math.log(2) / hA * x[1]
+            y[1] = kA - cR * (xI/fACE2[0]) * x[0] - math.log(2) / hA * x[1]
 
             # ANGI
-            y[2] = cR * x[0] - cA * xI * x[2] - cN * x[2] - math.log(2) / hA1 * x[2]
+            y[2] = cR * (xI/fACE2[0]) * x[0] - cA * xI * x[2] - cN * x[2] - math.log(2) / hA1 * x[2]
 
             # ANGII
             y[3] = cA * xI * x[2] - cAT1 * x[3] - cAT2 * x[3] - cAPA * x[3] - kace2ang2on * xI * x[3] - math.log(2) / hA2 * x[3]
@@ -218,31 +219,34 @@ for Cases in range(number_of_cases):
             # MAS-ANG(1-7)
             y[9] = cmas * x[4] - math.log(2) / hmas * x[9]
 
+            # Unconverted ANGII
+            y[10] = (kace2ang2on *fACE2[0]* x3 - kace2ang2on * xI * x[3])/(kace2ang2on *fACE2[0]* x3) -x[10]  # divide by kace2ang2on *fACE2[0]* x3 only to get the fraction for plotting
+
             # TGF-β
-            y[10] = (kace2ang2on *fACE2[0]* x[3] - kace2ang2on * xI * x[3]) * kT + kMT * x[11] + kFT * x[12] - dT * x[10]
+            y[11] = x[10] * kT *kace2ang2on *fACE2[0]* x3 + kMT * x[12] + kFT * x[13] - dT * x[11]
 
             # Macrophage
-            y[11] = MTB/90 - dM*x[11]
+            y[12] = MTB / 90 - dM * x[12]
 
             # Fibroblast
-            y[12] = FgTB/(48*60) - dF * x[12]
+            y[13] = FgTB / (48 * 60) - dF * x[13]
 
             # Collagen
-            y[13] = kFC * ((0.942 * x[10]) / (0.174 + x[10])) * x[12]
+            y[14] = kFC * ((0.942 * x[11]) / (0.174 + x[11])) * x[13]
 
             return y
 
 
-        if i==0:
-            x = (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13)
+        if i == 0:
+            x = (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14)
             T = np.arange(0.0, N1, 0.1)
-            result = np.array(odeint(diff, x, T, args=(0,kT)))
+            result = np.array(odeint(diff, x, T, args=(0, kT)))
             output.append(result)
 
         else:
-            x = (result[-1,0], result[-1,1],result[-1,2],result[-1,3], result[-1,4],result[-1,5], result[-1,6],result[-1,7], result[-1,8],result[-1,9], result[-1,10], result[-1, 11], result[-1,12],result[-1,13])
+            x = (result[-1, 0], result[-1, 1], result[-1, 2], result[-1, 3], result[-1, 4], result[-1, 5], result[-1, 6], result[-1, 7], result[-1, 8], result[-1, 9], result[-1, 10], result[-1, 11], result[-1, 12], result[-1, 13], result[-1, 14])
             T = np.arange(0.0, N2, 0.1)
-            result = np.array(odeint(diff, x, T, args=(1,kT)))
+            result = np.array(odeint(diff, x, T, args=(1, kT)))
             output.append(result)
 
 
