@@ -28,7 +28,7 @@ Corresponding author: A. N. Ford Versypt, ashleefv@buffalo.edu
 
 [RAS.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS.ipynb
 [RAS_local_sensitivity_parameters.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS_local_sensitivity_parameters.ipynb
-[RAS_initial_value_variations.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS_local_sensitivity_parameters.ipynb
+[RAS_initial_value_variations.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS_initial_value_variations.ipynb
 [RAS_ANGII_to_TGF.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS_ANGII_to_TGF.ipynb
 [Template of in silico experiments]: https://github.com/ashleefv/covid19fibrosisRAS/tree/master/Template%20of%20in%20silico%20experiments
 
