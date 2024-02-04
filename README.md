@@ -13,7 +13,7 @@ Corresponding author: A. N. Ford Versypt, ashleefv@buffalo.edu
 
 ### Scripts
 
-* [RAS.ipynb] This file will generate RAS and immune dynamics and dose response to ueACE2.
+* [RAS.ipynb] This file will generate RAS and immune dynamics and dose response to ueACE2
 
 * [RAS_initial_value_variations.ipynb] This file generate prediction with variation of initial values of ANGI, ANGII, and ANG1-7 within experimentally obserevd SARS-CoV-2 negative and SARS-CoV-2 positive patients
 
@@ -23,9 +23,9 @@ Corresponding author: A. N. Ford Versypt, ashleefv@buffalo.edu
 
 * ueACE2_200.p - ueACE2_2000.p and ueACE2t are data file for ACE2 dynamics from the agent-based model
 
-* The folder [Template of in silico experiments] contains template code for all the cases of ACE variations from 200-2000.
+* The folder [Template of in silico experiments] contains template code for all the cases of ACE variations from 200-2000
 
-* [Multi_run_analysis.ipynb] This file extracts data from multiple replications and plots mean responses. This file also generates the ueACE2 dynamics.
+* [Multi_run_analysis.ipynb] This file extracts data from multiple replications and plots mean responses. This file also generates the ueACE2 dynamics
 
 
 [RAS.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS.ipynb
