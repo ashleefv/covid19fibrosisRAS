@@ -15,7 +15,7 @@ Corresponding author: A. N. Ford Versypt, ashleefv@buffalo.edu
 
 * [RAS.ipynb] This file will generate RAS and immune dynamics and dose response to ueACE2.
 
-* [RAS_initial_value_variations.ippy] This file generate prediction with variation of initial values of ANGI, ANGII, and ANG1-7 within experimentally obserevd SARS-CoV-2 negative and SARS-CoV-2 positive patients
+* [RAS_initial_value_variations.ipynb] This file generate prediction with variation of initial values of ANGI, ANGII, and ANG1-7 within experimentally obserevd SARS-CoV-2 negative and SARS-CoV-2 positive patients
 
 * [RAS_local_sensitivity_parameters.ipynb] This file generate time dynamic sensitivity for model parameters
 
