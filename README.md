@@ -1,9 +1,9 @@
 # covid19fibrosisRAS
 
 ## Overview 
-The mathematical model describes the role of patient-specific premorbidity, age, and gender differences in the progression of COVID-19 lung fibrosis.
+The mathematical model describes the role of patient-specific premorbidity, age, and sex differences on Renin-Angiotensin System.
 
-## Mathematical modeling of premorbidity, age, and gender differences in COVID-19 lung fibrosis
+## Mathematical Modeling of Impacts of Patient Differences on Renin-Angiotensin System and Applications to COVID-19 Lung Fibrosis Outcomes
 ### Code Authors
 Mohammad Aminul Islam and Ashlee N. Ford Versypt, 
 Dept. of Chemical & Biological Engineering,
@@ -25,12 +25,15 @@ Corresponding author: A. N. Ford Versypt, ashleefv@buffalo.edu
 
 * The folder [Template of in silico experiments] contains template code for all the cases of ACE variations from 200-2000.
 
+* [Multi_run_analysis.ipynb] This file extracts data from multiple replications and plots mean responses. This file also generates the ueACE2 dynamics.
+
 
 [RAS.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS.ipynb
 [RAS_local_sensitivity_parameters.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS_local_sensitivity_parameters.ipynb
 [RAS_initial_value_variations.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS_initial_value_variations.ipynb
 [RAS_ANGII_to_TGF.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/RAS_ANGII_to_TGF.ipynb
 [Template of in silico experiments]: https://github.com/ashleefv/covid19fibrosisRAS/tree/master/Template%20of%20in%20silico%20experiments
+[Multi_run_analysis.ipynb]: https://github.com/ashleefv/covid19fibrosisRAS/blob/master/Multi_run_analysis.ipynb
 
 
 ## Acknowledgements
