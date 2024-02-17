@@ -1,5 +1,5 @@
 # covid19fibrosisRAS
-[![DOI](https://zenodo.org/badge/94033856.svg)](https://zenodo.org/doi/10.5281/zenodo.806014)
+[![DOI](https://zenodo.org/badge/557388588.svg)](https://zenodo.org/doi/10.5281/zenodo.7295153)
 
 ## Overview 
 The mathematical model describes the role of patient-specific premorbidity, age, and sex differences on Renin-Angiotensin System.
